@@ -2,8 +2,10 @@ package hod.springframework.spring5webapp.bootstrap;
 
 import hod.springframework.spring5webapp.model.Author;
 import hod.springframework.spring5webapp.model.Book;
+import hod.springframework.spring5webapp.model.Publisher;
 import hod.springframework.spring5webapp.repositories.AuthorRepository;
 import hod.springframework.spring5webapp.repositories.BookRepository;
+import hod.springframework.spring5webapp.repositories.PublisherRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -13,27 +15,33 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private AuthorRepository authorRepository;
     private BookRepository bookRepository;
+    private PublisherRepository publisherRepository;
 
-    public DevBootstrap(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public DevBootstrap(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     private void initData(){
         Author tich = new Author("Tich", "Kames");
-        Book batman = new Book("Batman", "1234", "Harper Collins");
+        Publisher pub1 = new Publisher("Harper Collins", "Randpark Ridge");
+        Book batman = new Book("Batman", "1234", pub1);
         tich.getBooks().add(batman);
         batman.getAuthors().add(tich);
 
         authorRepository.save(tich);
+        publisherRepository.save(pub1);
         bookRepository.save(batman);
 
         Author josh = new Author("Josh", "K");
-        Book xmen = new Book("Xmen", "1234", "Worx");
+        Publisher pub2 = new Publisher("Worx", "Centurion");
+        Book xmen = new Book("Xmen", "1234", pub2);
         josh.getBooks().add(xmen);
         xmen.getAuthors().add(josh);
 
         authorRepository.save(josh);
+        publisherRepository.save(pub2);
         bookRepository.save(xmen);
     }
 
