@@ -12,7 +12,7 @@ public class JokeController {
     @Autowired
     private JokeService jokeService;
 
-    @RequestMapping({"/", ""})
+    @RequestMapping({"/chucknorris"})
     public String showJoke(Model model){
         model.addAttribute("joke", jokeService.getJoke());
         return "chucknorris";
