@@ -20,12 +20,16 @@ public class PropertyConfig {
     @Value("${hod.dburl}")
     String url;
 
+    @Value("${hod.custom.username}")
+    String customField;
+
     @Bean
     public FakeDataSource fakeDataSource(){
         FakeDataSource fakeDataSource = new FakeDataSource();
         fakeDataSource.setUser(user);
         fakeDataSource.setPass(pass);
         fakeDataSource.setUrl(url);
+        fakeDataSource.setCustomField(customField);
 
         return fakeDataSource;
     }

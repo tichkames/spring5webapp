@@ -1,0 +1,28 @@
+#this is a comment
+name: Tich
+
+names: #inline comment
+  -Tich
+  -Josh
+  -Kames
+
+pound_sign: "#"
+
+book:
+  author: Joe Buck
+  publisher: Random House
+
+# boolean
+truth: yes
+
+false: no
+
+string_val: "This a it's qoute: and colon"
+
+include_new_lines: |
+  asdf new
+  asdf another
+
+ignore_new_lines: >
+  this is
+  just a one liner

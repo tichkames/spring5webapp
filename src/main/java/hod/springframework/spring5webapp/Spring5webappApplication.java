@@ -13,7 +13,8 @@ public class Spring5webappApplication {
 		ApplicationContext ctx = SpringApplication.run(Spring5webappApplication.class, args);
 
 		FakeDataSource fakeDS = (FakeDataSource) ctx.getBean(FakeDataSource.class);
-		System.out.println(String.format("fakeDS username: %s, password: %s, dburl: %s", fakeDS.getUser(), fakeDS.getPass(), fakeDS.getUrl()));
+		System.out.println(String.format("fakeDS username: %s, password: %s, dburl: %s, customField: %s",
+				fakeDS.getUser(), fakeDS.getPass(), fakeDS.getUrl(), fakeDS.getCustomField()));
 	}
 
 }
