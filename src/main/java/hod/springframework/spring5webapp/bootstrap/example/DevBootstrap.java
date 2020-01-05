@@ -57,7 +57,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         Recipe recipe = new Recipe();
 
         Ingredient ingredient1 = new Ingredient("ingredient1 description",
-                BigDecimal.valueOf(500), unitOfMeasureRepository.findByDescription("Teaspoon").get(), recipe);
+                BigDecimal.valueOf(500), unitOfMeasureRepository.findByDescription("Teaspoon").get());
 
         Set<Ingredient> ingredients = new HashSet<>();
         ingredients.add(ingredient1);
