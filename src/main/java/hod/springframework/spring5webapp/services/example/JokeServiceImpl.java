@@ -1,4 +1,4 @@
-package hod.springframework.spring5webapp.services;
+package hod.springframework.spring5webapp.services.example;
 
 
 import guru.springframework.norris.chuck.ChuckNorrisQuotes;

@@ -1,6 +1,6 @@
 package hod.springframework.spring5webapp.config;
 
-import hod.springframework.spring5webapp.examplebeans.FakeDataSource;
+import hod.springframework.spring5webapp.bean.example.FakeDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

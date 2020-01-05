@@ -1,4 +1,4 @@
-package hod.springframework.spring5webapp.model;
+package hod.springframework.spring5webapp.model.example;
 
 import javax.persistence.*;
 

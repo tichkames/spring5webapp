@@ -1,6 +1,6 @@
-package hod.springframework.spring5webapp.controllers;
+package hod.springframework.spring5webapp.controllers.example;
 
-import hod.springframework.spring5webapp.repositories.BookRepository;
+import hod.springframework.spring5webapp.repositories.example.BookRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

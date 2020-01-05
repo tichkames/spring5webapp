@@ -1,11 +1,11 @@
 package hod.springframework.spring5webapp.bootstrap;
 
-import hod.springframework.spring5webapp.model.Author;
-import hod.springframework.spring5webapp.model.Book;
-import hod.springframework.spring5webapp.model.Publisher;
-import hod.springframework.spring5webapp.repositories.AuthorRepository;
-import hod.springframework.spring5webapp.repositories.BookRepository;
-import hod.springframework.spring5webapp.repositories.PublisherRepository;
+import hod.springframework.spring5webapp.model.example.Author;
+import hod.springframework.spring5webapp.model.example.Book;
+import hod.springframework.spring5webapp.model.example.Publisher;
+import hod.springframework.spring5webapp.repositories.example.AuthorRepository;
+import hod.springframework.spring5webapp.repositories.example.BookRepository;
+import hod.springframework.spring5webapp.repositories.example.PublisherRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;

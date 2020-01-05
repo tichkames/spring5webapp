@@ -1,6 +1,6 @@
 package hod.springframework.spring5webapp;
 
-import hod.springframework.spring5webapp.examplebeans.FakeDataSource;
+import hod.springframework.spring5webapp.bean.example.FakeDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;

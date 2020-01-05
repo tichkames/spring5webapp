@@ -1,4 +1,4 @@
-package hod.springframework.spring5webapp.examplebeans;
+package hod.springframework.spring5webapp.bean.example;
 
 public class FakeDataSource {
     private String user;
