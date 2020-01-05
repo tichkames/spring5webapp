@@ -1,36 +1,26 @@
 package hod.springframework.spring5webapp.controllers.recipe;
 
-import hod.springframework.spring5webapp.model.recipe.Category;
-import hod.springframework.spring5webapp.model.recipe.UnitOfMeasure;
-import hod.springframework.spring5webapp.repositories.recipe.CategoryRepository;
-import hod.springframework.spring5webapp.repositories.recipe.UnitOfMeasureRepository;
+import hod.springframework.spring5webapp.model.recipe.Recipe;
+import hod.springframework.spring5webapp.services.recipe.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Optional;
+import java.util.Set;
 
 @Controller
 public class RecipeController {
 
     @Autowired
-    private CategoryRepository categoryRepository;
-
-    @Autowired
-    private UnitOfMeasureRepository unitOfMeasureRepository;
+    private RecipeService recipeService;
 
     @RequestMapping({"", "/", "/recipe"})
-    private String getRecipePage(){
+    private String getRecipePage(Model model){
         System.out.println("RecipeController..");
 
-        Optional<Category> category = categoryRepository.findByDescription("American");
-        Optional<UnitOfMeasure> uom = unitOfMeasureRepository.findByDescription("Teaspoon");
-
-        System.out.println(String.format("category %s", category.get().getDescription()));
-        System.out.println(String.format("uom %s", uom.get().getDescription()));
-
+        Set<Recipe> recipes = recipeService.getRecipes();
+        model.addAttribute("recipes", recipes);
         return "recipe";
     }
-
 }
