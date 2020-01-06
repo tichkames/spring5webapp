@@ -20,17 +20,22 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public Recipe getRecipe(String description) {
-        Optional<Recipe> recipe = recipeRepository.findByDescription(description);
-        return recipe.isPresent() ? recipe.get() : null;
-    }
-
-    @Override
     public Set<Recipe> getRecipes() {
         log.debug("Inside getRecipes of RecipeServiceImpl");
 
         Set<Recipe> recipes = new HashSet<>();
         recipeRepository.findAll().iterator().forEachRemaining(recipes::add);
         return recipes;
+    }
+
+    public Recipe findById(Long id){
+
+        Optional<Recipe> recipeOptional = recipeRepository.findById(id);
+
+        if(!recipeOptional.isPresent()){
+            throw new RuntimeException("Recipe Not Found!");
+        }
+
+        return recipeOptional.get();
     }
 }
