@@ -3,7 +3,6 @@ package hod.springframework.spring5webapp.services.recipe;
 import hod.springframework.spring5webapp.model.recipe.Recipe;
 import hod.springframework.spring5webapp.repositories.recipe.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -14,8 +13,11 @@ import java.util.Set;
 @Service
 public class RecipeServiceImpl implements RecipeService {
 
-    @Autowired
     private RecipeRepository recipeRepository;
+
+    public RecipeServiceImpl(RecipeRepository recipeRepository) {
+        this.recipeRepository = recipeRepository;
+    }
 
     @Override
     public Recipe getRecipe(String description) {
