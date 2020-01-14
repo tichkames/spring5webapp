@@ -3,6 +3,7 @@ package hod.springframework.spring5webapp.services.recipe;
 import hod.springframework.spring5webapp.commands.recipe.RecipeCommand;
 import hod.springframework.spring5webapp.converters.recipe.RecipeCommandToRecipe;
 import hod.springframework.spring5webapp.converters.recipe.RecipeToRecipeCommand;
+import hod.springframework.spring5webapp.exceptions.NotFoundException;
 import hod.springframework.spring5webapp.model.recipe.Recipe;
 import hod.springframework.spring5webapp.repositories.recipe.RecipeRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,6 +16,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.util.AssertionErrors.assertNotNull;
 
@@ -51,6 +53,19 @@ public class RecipeServiceImplTest {
         assertNotNull("Null recipe returned", recipeReturned);
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
+    }
+
+    @Test
+    public void getRecipeByIdTestNotFound() throws Exception {
+
+        Optional<Recipe> recipeOptional = Optional.empty();
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        //should go boom
+        Exception exception = assertThrows(NotFoundException.class, () -> {
+            Recipe recipeReturned = recipeService.findById(1L);
+        });
     }
 
     @Test
