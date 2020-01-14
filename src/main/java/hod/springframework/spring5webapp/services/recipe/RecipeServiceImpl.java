@@ -3,6 +3,7 @@ package hod.springframework.spring5webapp.services.recipe;
 import hod.springframework.spring5webapp.commands.recipe.RecipeCommand;
 import hod.springframework.spring5webapp.converters.recipe.RecipeCommandToRecipe;
 import hod.springframework.spring5webapp.converters.recipe.RecipeToRecipeCommand;
+import hod.springframework.spring5webapp.exceptions.NotFoundException;
 import hod.springframework.spring5webapp.model.recipe.Recipe;
 import hod.springframework.spring5webapp.repositories.recipe.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +43,8 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
         if (!recipeOptional.isPresent()) {
-            throw new RuntimeException("Recipe Not Found!");
+            //throw new RuntimeException("Recipe Not Found!");
+            throw new NotFoundException("Recipe Not Found");
         }
 
         return recipeOptional.get();
