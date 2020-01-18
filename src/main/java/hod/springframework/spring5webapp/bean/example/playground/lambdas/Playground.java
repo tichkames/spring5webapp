@@ -1,4 +1,4 @@
-package hod.springframework.spring5webapp.bean.example;
+package hod.springframework.spring5webapp.bean.example.playground.lambdas;
 
 public class Playground {
 

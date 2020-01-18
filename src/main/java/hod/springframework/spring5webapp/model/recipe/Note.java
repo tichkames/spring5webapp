@@ -1,21 +1,13 @@
 package hod.springframework.spring5webapp.model.recipe;
 
-import lombok.*;
-
-import javax.persistence.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
-@Entity
 @EqualsAndHashCode(exclude = {"recipe"})
 public class Note {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @OneToOne
+    private String id;
     private Recipe recipe;
-
-    @Lob
     private String recipeNote;
 }

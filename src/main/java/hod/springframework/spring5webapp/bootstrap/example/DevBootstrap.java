@@ -1,15 +1,9 @@
 package hod.springframework.spring5webapp.bootstrap.example;
 
-import hod.springframework.spring5webapp.model.example.Author;
-import hod.springframework.spring5webapp.model.example.Book;
-import hod.springframework.spring5webapp.model.example.Publisher;
 import hod.springframework.spring5webapp.model.recipe.Category;
 import hod.springframework.spring5webapp.model.recipe.Ingredient;
 import hod.springframework.spring5webapp.model.recipe.Note;
 import hod.springframework.spring5webapp.model.recipe.Recipe;
-import hod.springframework.spring5webapp.repositories.example.AuthorRepository;
-import hod.springframework.spring5webapp.repositories.example.BookRepository;
-import hod.springframework.spring5webapp.repositories.example.PublisherRepository;
 import hod.springframework.spring5webapp.repositories.recipe.CategoryRepository;
 import hod.springframework.spring5webapp.repositories.recipe.RecipeRepository;
 import hod.springframework.spring5webapp.repositories.recipe.UnitOfMeasureRepository;
@@ -25,10 +19,6 @@ import java.util.Set;
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
-    private AuthorRepository authorRepository;
-    private BookRepository bookRepository;
-    private PublisherRepository publisherRepository;
-
     @Autowired
     private RecipeRepository recipeRepository;
 
@@ -37,12 +27,6 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     @Autowired
     private CategoryRepository categoryRepository;
-
-    public DevBootstrap(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
-        this.authorRepository = authorRepository;
-        this.bookRepository = bookRepository;
-        this.publisherRepository = publisherRepository;
-    }
 
     private void initRecipeData(){
 
@@ -80,30 +64,9 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         recipeRepository.save(recipe);
     }
 
-    private void initExampleData(){
-        Author tich = new Author("Tich", "Kames");
-        Publisher pub1 = new Publisher("Harper Collins", "Randpark Ridge");
-        Book batman = new Book("Batman", "1234", pub1);
-        tich.getBooks().add(batman);
-        batman.getAuthors().add(tich);
-
-        authorRepository.save(tich);
-        publisherRepository.save(pub1);
-        bookRepository.save(batman);
-
-        Author josh = new Author("Josh", "K");
-        Publisher pub2 = new Publisher("Worx", "Centurion");
-        Book xmen = new Book("Xmen", "1234", pub2);
-        josh.getBooks().add(xmen);
-        xmen.getAuthors().add(josh);
-
-        authorRepository.save(josh);
-        publisherRepository.save(pub2);
-        bookRepository.save(xmen);
-    }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        initExampleData();
+        initRecipeData();
     }
 }
