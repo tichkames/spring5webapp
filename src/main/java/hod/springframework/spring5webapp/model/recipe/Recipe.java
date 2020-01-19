@@ -1,15 +1,22 @@
 package hod.springframework.spring5webapp.model.recipe;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @ToString(exclude = {"note", "ingredients", "categories"})
+@Document
 public class Recipe {
 
+    @Id
     private String id;
     private String description;
     private Integer prepTime;
@@ -22,15 +29,17 @@ public class Recipe {
     private Byte[] image;
     private Note note;
     private Set<Ingredient> ingredients = new HashSet<>();
+
+    @DBRef
     private Set<Category> categories = new HashSet<>();
 
     public void setNote(Note note) {
-        this.note = note;
-        this.note.setRecipe(this);
+        if(note != null) {
+            this.note = note;
+        }
     }
 
     public Recipe addIngredient(Ingredient ingredient){
-        ingredient.setRecipe(this);
         this.ingredients.add(ingredient);
         return this;
     }

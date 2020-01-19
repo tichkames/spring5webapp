@@ -5,6 +5,7 @@ import hod.springframework.spring5webapp.converters.recipe.RecipeCommandToRecipe
 import hod.springframework.spring5webapp.converters.recipe.RecipeToRecipeCommand;
 import hod.springframework.spring5webapp.model.recipe.Recipe;
 import hod.springframework.spring5webapp.repositories.recipe.RecipeRepository;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
+@Disabled
 public class RecipeServiceIT {
 
     public static final String NEW_DESCRIPTION = "New Description";

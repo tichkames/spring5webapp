@@ -1,13 +1,14 @@
 package hod.springframework.spring5webapp.model.recipe;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
-@Data
-@EqualsAndHashCode(exclude = {"recipe"})
+@Getter
+@Setter
 public class Note {
 
+    @Id
     private String id;
-    private Recipe recipe;
     private String recipeNote;
 }
