@@ -2,13 +2,13 @@ package hod.springframework.spring5webapp.services.recipe;
 
 import hod.springframework.spring5webapp.commands.recipe.RecipeCommand;
 import hod.springframework.spring5webapp.model.recipe.Recipe;
-
-import java.util.Set;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface RecipeService {
-    Set<Recipe> getRecipes();
-    Recipe findById(String id);
-    RecipeCommand saveRecipeCommand(RecipeCommand command);
-    RecipeCommand findCommandById(String l);
-    void deleteById(String idToDelete);
+    Flux<Recipe> getRecipes();
+    Mono<Recipe> findById(String id);
+    Mono<RecipeCommand> saveRecipeCommand(RecipeCommand command);
+    Mono<RecipeCommand> findCommandById(String l);
+    Mono<Void> deleteById(String idToDelete);
 }

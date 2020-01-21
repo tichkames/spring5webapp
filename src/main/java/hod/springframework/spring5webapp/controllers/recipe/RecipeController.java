@@ -1,19 +1,14 @@
 package hod.springframework.spring5webapp.controllers.recipe;
 
 import hod.springframework.spring5webapp.commands.recipe.RecipeCommand;
-import hod.springframework.spring5webapp.exceptions.NotFoundException;
-import hod.springframework.spring5webapp.model.recipe.Recipe;
 import hod.springframework.spring5webapp.services.recipe.RecipeService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.Set;
 
 @Slf4j
 @Controller
@@ -30,8 +25,7 @@ public class RecipeController {
     public String getRecipePage(Model model){
         log.debug("getRecipePage..");
 
-        Set<Recipe> recipes = recipeService.getRecipes();
-        model.addAttribute("recipes", recipes);
+        model.addAttribute("recipes", recipeService.getRecipes());
         return "recipe";
     }
 
@@ -67,7 +61,7 @@ public class RecipeController {
             return RECIPE_RECIPEFORM_URL;
         }
 
-        RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
+        RecipeCommand savedCommand = recipeService.saveRecipeCommand(command).block();
 
         return "redirect:/recipe/" + savedCommand.getId() + "/show";
     }
@@ -81,18 +75,18 @@ public class RecipeController {
         return "redirect:/";
     }
 
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(NotFoundException.class)
-    public ModelAndView handleNotFound(Exception exception){
-
-        log.error("Handling not found exception");
-        log.error(exception.getMessage());
-
-        ModelAndView modelAndView = new ModelAndView();
-
-        modelAndView.setViewName("404error");
-        modelAndView.addObject("exception", exception);
-
-        return modelAndView;
-    }
+//    @ResponseStatus(HttpStatus.NOT_FOUND)
+//    @ExceptionHandler(NotFoundException.class)
+//    public ModelAndView handleNotFound(Exception exception){
+//
+//        log.error("Handling not found exception");
+//        log.error(exception.getMessage());
+//
+//        ModelAndView modelAndView = new ModelAndView();
+//
+//        modelAndView.setViewName("404error");
+//        modelAndView.addObject("exception", exception);
+//
+//        return modelAndView;
+//    }
 }
