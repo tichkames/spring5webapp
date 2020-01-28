@@ -89,13 +89,13 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         Optional<Category> americanCategoryOptional = categoryRepository.findByDescription("American");
 
         if(!americanCategoryOptional.isPresent()){
-            throw new RuntimeException("Expected Category Not Found");
+            throw new RuntimeException("Expected CategoryRest Not Found");
         }
 
         Optional<Category> mexicanCategoryOptional = categoryRepository.findByDescription("Mexican");
 
         if(!mexicanCategoryOptional.isPresent()){
-            throw new RuntimeException("Expected Category Not Found");
+            throw new RuntimeException("Expected CategoryRest Not Found");
         }
 
         Category americanCategory = americanCategoryOptional.get();
