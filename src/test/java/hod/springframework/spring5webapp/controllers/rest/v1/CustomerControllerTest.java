@@ -47,12 +47,12 @@ public class CustomerControllerTest extends AbstractRestControllerTest {
         CustomerDTO customer1 = new CustomerDTO();
         customer1.setFirstname("Michale");
         customer1.setLastname("Weston");
-        customer1.setCustomerUrl("/api/v1/customer/1");
+        customer1.setCustomerUrl("/api/v1/customers/1");
 
         CustomerDTO customer2 = new CustomerDTO();
         customer2.setFirstname("Sam");
         customer2.setLastname("Axe");
-        customer2.setCustomerUrl("/api/v1/customer/2");
+        customer2.setCustomerUrl("/api/v1/customers/2");
 
         when(customerService.getAllCustomers()).thenReturn(Arrays.asList(customer1, customer2));
 
@@ -69,7 +69,7 @@ public class CustomerControllerTest extends AbstractRestControllerTest {
         CustomerDTO customer1 = new CustomerDTO();
         customer1.setFirstname("Michale");
         customer1.setLastname("Weston");
-        customer1.setCustomerUrl("/api/v1/customer/1");
+        customer1.setCustomerUrl("/api/v1/customers/1");
 
         when(customerService.getCustomerById(anyLong())).thenReturn(customer1);
 
